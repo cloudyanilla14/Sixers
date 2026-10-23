@@ -1,12 +1,9 @@
-# NBA PH — All Teams Calendar (2026–27)
+# NBA PH — one-calendar rebuild
 
-Netlify-ready static site + serverless function. Displays all 30 NBA teams in Philippine time (Asia/Manila). Select **All NBA Teams** or any one team, navigate October 2026–June 2027, toggle list/calendar, see scores, and export visible games to an ICS calendar file.
+One clickable monthly NBA calendar for ALL games from the ESPN scoreboard, converted to Asia/Manila. Clicking any day shows all matchups, scores/status, logos, venue, broadcasts when available.
 
-## Updating your existing Netlify project
-1. Download and unzip this project.
-2. In the existing GitHub repository, replace root `index.html` and `netlify.toml`, add `sixers-schedule.json`, and add `netlify/functions/games.js`. Keep all paths and subfolders.
-3. Commit changes; Netlify redeploys automatically.
-4. Hard-refresh the deployed URL.
+## Deployment
+Upload `index.html` at the ROOT of your existing `cloudyanilla14/Sixers` repository. Keep Netlify's publish directory as `.`. No build command or serverless function is needed. Existing `netlify.toml` can remain, but this version does not call the prior Sixers-only function.
 
-## Data and known limitations
-The monthly schedule and scores are fetched server-side from ESPN's unofficial public scoreboard endpoint, requested by UTC date window and converted client-side to Asia/Manila. No API token required, but availability, completeness, or response shape is not guaranteed. The **built-in Sixers schedule** remains a fallback ONLY for Philadelphia. Other teams require the scoreboard connection and the site prominently says so when offline. ESPN's live scoreboard results may be delayed; refresh to see newer results. The calendar covers through June to accommodate playoffs as they are scheduled. Future NBA Cup fixtures and playoff matches may be absent until announced. ESPN logos and team names are trademarks of their respective owners.
+## Data reliability
+The app queries ESPN's public, undocumented NBA scoreboard directly for each individual US calendar day, including 2-day padding on both ends to account for the Asia/Manila date shift. Games are deduplicated by event ID and grouped using Philippine dates. It issues ~34 daily requests (7 concurrently) when each month is first opened and refreshes every two minutes on a visible page. It caches results for two minutes per month in memory. If any request fails the app warns that the month is incomplete; it never silently substitutes the Sixers schedule as the entire NBA. The site requires internet access and ESPN feed availability. ESPN may change its API or CORS policies. No guarantee of uninterrupted real-time service.
