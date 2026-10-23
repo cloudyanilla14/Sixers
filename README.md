@@ -1,7 +1,24 @@
-# HOOPD V6 — Better career-stat diagnostics
+# HOOPD V7 — Hybrid Design Edition
 
-Replace root `index.html` and `netlify.toml`. Upload `netlify/functions/player.js` preserving the exact folders.
+A visual-only redesign based on the original V6 app. **All V6 JavaScript and Netlify functions are unchanged.** All-NBA monthly calendar, clickable dates, game scores, box-score player tables, player profiles, Philippine timezone conversion and the existing career-stats/error behavior are retained.
 
-**Verify Netlify Function:** on your own site, open `/.netlify/functions/player?id=1966&kind=stats&season=2025&seasontype=2`. It should show ESPN JSON, not 404. If you see 404, make sure functions file is in `netlify/functions/player.js` in GitHub and redeploy. If 502, ESPN is unreachable from the Netlify function.
+### Deploy to existing GitHub / Netlify
 
-V6 improves parsing of nested formats and adds a diagnostics link rather than assuming Netlify setup is the only cause. Live upstream data behavior has not been tested.
+1. Unzip this archive.
+2. Upload/replace `index.html`, `netlify.toml`, `netlify/functions/player.js` and **the `assets/arena.svg` file** at the root of your repository, preserving folders.
+3. Commit to your current Netlify-connected branch. Netlify auto-deploys.
+4. Hard-refresh your browser after deployment.
+
+### What's new
+
+- Premium dark hybrid court-themed wallpaper, supplied as local SVG (no external photo dependency)
+- Editorial hero, updated navigation and calendar styling
+- Larger team logos, more polished clickable match cards
+- NBA-2K-inspired scoreboard modal and cinematic player hero cards
+- Responsive layouts and reduced-motion support
+
+### Known limitation
+
+**Player year-by-year career-history retrieval is NOT repaired in V7.** It uses the same ESPN integration from V6. No statistics, achievements, schedules or scores have been invented.
+
+HOOPD is an independent fan concept and not officially affiliated with the NBA.
