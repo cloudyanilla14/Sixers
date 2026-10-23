@@ -1,13 +1,7 @@
-# HOOPD v5 — Player Bio & Career Stats Fix
+# HOOPD V6 — Better career-stat diagnostics
 
-## Updating your existing Netlify + GitHub site
-Replace root `index.html` and `netlify.toml`, then upload `netlify/functions/player.js` preserving the folder structure. Commit changes. The Netlify build must support Functions. Clear the browser cache after deployment.
+Replace root `index.html` and `netlify.toml`. Upload `netlify/functions/player.js` preserving the exact folders.
 
-### Changes
-- HOOPD wordmark remains; basketball icon becomes an NBA logo graphic loaded from the NBA CDN.
-- Basketball arena-inspired background and richer player profile.
-- Bio gracefully falls back across three ESPN endpoints.
-- Career seasons now fetch through a Netlify Function (avoiding browser CORS), with 28 years of season lookups and resilient category parsing.
-- Incomplete ESPN records remain labeled as unavailable rather than guessed.
+**Verify Netlify Function:** on your own site, open `/.netlify/functions/player?id=1966&kind=stats&season=2025&seasontype=2`. It should show ESPN JSON, not 404. If you see 404, make sure functions file is in `netlify/functions/player.js` in GitHub and redeploy. If 502, ESPN is unreachable from the Netlify function.
 
-ESPN public APIs are unofficial and may change. NBA imagery and names are third-party trademarks; this is an independent fan website. Data not live-verified here because outbound access from this environment was unavailable.
+V6 improves parsing of nested formats and adds a diagnostics link rather than assuming Netlify setup is the only cause. Live upstream data behavior has not been tested.
