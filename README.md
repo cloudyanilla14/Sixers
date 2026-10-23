@@ -1,24 +1,7 @@
-# HOOPD V7 — Hybrid Design Edition
+# hoopd. — Version 8 (Actual UI redesign)
 
-A visual-only redesign based on the original V6 app. **All V6 JavaScript and Netlify functions are unchanged.** All-NBA monthly calendar, clickable dates, game scores, box-score player tables, player profiles, Philippine timezone conversion and the existing career-stats/error behavior are retained.
+Deploy by replacing the existing repository files with the extracted contents. Preserve folder structures.
 
-### Deploy to existing GitHub / Netlify
+Changes: entirely new original HOOPD H mark; removed NBA league logo from header, wallpaper and promotional backgrounds; reworked landing hero, cards, scoreboard, calendar, and player-profile presentation; new locally hosted court illustration at `assets/court-v8.svg`. Game schedule / player stats / Netlify function logic unchanged from V7, including the unresolved career history problem.
 
-1. Unzip this archive.
-2. Upload/replace `index.html`, `netlify.toml`, `netlify/functions/player.js` and **the `assets/arena.svg` file** at the root of your repository, preserving folders.
-3. Commit to your current Netlify-connected branch. Netlify auto-deploys.
-4. Hard-refresh your browser after deployment.
-
-### What's new
-
-- Premium dark hybrid court-themed wallpaper, supplied as local SVG (no external photo dependency)
-- Editorial hero, updated navigation and calendar styling
-- Larger team logos, more polished clickable match cards
-- NBA-2K-inspired scoreboard modal and cinematic player hero cards
-- Responsive layouts and reduced-motion support
-
-### Known limitation
-
-**Player year-by-year career-history retrieval is NOT repaired in V7.** It uses the same ESPN integration from V6. No statistics, achievements, schedules or scores have been invented.
-
-HOOPD is an independent fan concept and not officially affiliated with the NBA.
+GitHub: Upload `index.html` and the `assets/court-v8.svg` file; retain existing `netlify.toml` and functions. Commit to trigger Netlify deployment. Then Ctrl+Shift+R.
