@@ -1,9 +1,9 @@
-# NBA PH — one-calendar rebuild
+# NBA PH Calendar – Player Stats Edition
 
-One clickable monthly NBA calendar for ALL games from the ESPN scoreboard, converted to Asia/Manila. Clicking any day shows all matchups, scores/status, logos, venue, broadcasts when available.
+One calendar for the entire NBA (all 30 teams), with Philippine-local dates and game times. Select a date to see every available NBA matchup. Tap a matchup to open its ESPN game box score: home and away player stats with switchable team tabs. No team selection needed.
 
-## Deployment
-Upload `index.html` at the ROOT of your existing `cloudyanilla14/Sixers` repository. Keep Netlify's publish directory as `.`. No build command or serverless function is needed. Existing `netlify.toml` can remain, but this version does not call the prior Sixers-only function.
+## Update your existing Netlify site
+Replace the **root** `index.html` file in your existing GitHub repository `cloudyanilla14/Sixers` with the one in this ZIP. Commit the change, and Netlify will automatically redeploy. No new project is required.
 
-## Data reliability
-The app queries ESPN's public, undocumented NBA scoreboard directly for each individual US calendar day, including 2-day padding on both ends to account for the Asia/Manila date shift. Games are deduplicated by event ID and grouped using Philippine dates. It issues ~34 daily requests (7 concurrently) when each month is first opened and refreshes every two minutes on a visible page. It caches results for two minutes per month in memory. If any request fails the app warns that the month is incomplete; it never silently substitutes the Sixers schedule as the entire NBA. The site requires internet access and ESPN feed availability. ESPN may change its API or CORS policies. No guarantee of uninterrupted real-time service.
+## Data availability
+ESPN's public, undocumented scoreboard endpoint is used for each NBA day, then games are converted to Asia/Manila dates. Tapping a matchup loads ESPN's game summary for that specific event. Stats generally become available during/after the game; the page explains when they're missing. Requires internet and ESPN feed access. If ESPN's network/CORS policy blocks requests, the site will show an error. Future NBA Cup/playoff matchups may not be announced yet. The site does not fabricate missing schedules or stats.
